@@ -1,17 +1,17 @@
-package test;
+package com.Servlets.servlet;
 import java.sql.*;
 
 public class JdbcDemo {
 	
 	static Connection con = DBConnection.getDBConnection();
 	
-	public static void main(String[] args) throws Exception {
-		JdbcDemo obj = new JdbcDemo();
-		obj.addUser("govardhan", 9886, "Hyd");
-		obj.updateUser("buddy",99667792);
-		selectUser();
-		
-	}
+//	public static void main(String[] args) throws Exception {
+//		JdbcDemo obj = new JdbcDemo();
+//		obj.addUser("govardhan", 9886, "Hyd");
+//		obj.updateUser("buddy",99667792);
+//		selectUser();
+//		
+//	}
 	/**
 	 * This method will add user into contacts table
 	 * @param name
