@@ -27,4 +27,8 @@ public class LoginServlet extends GenericServlet {
 		System.out.println("Hello this is from service method.  "+ userName + password);
 		
 	}
+	public static void main(String[] args) throws SQLException {
+		test.JdbcDemo.selectUser();
+	}
+	
 }
