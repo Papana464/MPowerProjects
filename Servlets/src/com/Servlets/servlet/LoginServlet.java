@@ -9,11 +9,10 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-
-
-
+import test.JdbcDemo;
 
 public class LoginServlet extends GenericServlet {
+	
 	
 	public void init(ServletConfig config) {
 		System.out.println("Hello this is from init method.");
@@ -28,7 +27,8 @@ public class LoginServlet extends GenericServlet {
 		
 	}
 	public static void main(String[] args) throws SQLException {
-		test.JdbcDemo.selectUser();
+		JdbcDemo.selectUser();
 	}
 	
 }
+
