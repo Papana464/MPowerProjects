@@ -10,7 +10,7 @@ public class DBConnection {
 	public static Connection getDBConnection(){
 		try{
 			if(con==null){
-				String url="jdbc:mysql://localhost:3306/govardhan?verifyServerCertificate=false&useSSL=true";
+				String url="jdbc:mysql://localhost:3306/?verifyServerCertificate=false&useSSL=true";
 				String uname="root";
 				String pwd="dntlvplz";
 				Class.forName("com.mysql.cj.jdbc.Driver");
