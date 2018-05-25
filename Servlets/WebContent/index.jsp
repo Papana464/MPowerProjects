@@ -12,7 +12,7 @@
 			      <input type="text" placeholder="userName" name="userName"/>
 			      <input type="password" placeholder="password" name="password"/>
 			      <button>login</button>
-			      <p class="message">Not registered? <a href="userDetails.html">Create an account</a></p>
+			      <p class="message">Not registered? <a href="userDetails.jsp">Create an account</a></p>
 			    </form>
 		  	</div>
 		</div>

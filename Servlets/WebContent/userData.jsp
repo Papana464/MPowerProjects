@@ -10,7 +10,7 @@
 		   <div class="form">
 			   <form class="register-form" method="post">
 			     <h1>Successfully logged in</h1>
-			     <p class="message"> <a href="index.html">Home</a></p>
+			     <p class="message"> <a href="index.jsp">Home</a></p>
 			   </form>
 		  </div>
 	</div>
