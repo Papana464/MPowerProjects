@@ -4,12 +4,12 @@ import java.sql.*;
 public class JdbcDemo {
 	
 	static Connection con = DBConnection.getDBConnection();
-	
+	static String pass;
 	public static void main(String[] args) throws Exception {
 		JdbcDemo obj = new JdbcDemo();
-		obj.addUser("govardhan", 9886, "Hyd");
-		obj.updateUser("buddy",99667792);
-		selectUser();
+//		obj.addUser("govardhan", 9886, "Hyd");
+//		obj.updateUser("buddy",99667792);
+		obj.checkUser("nani");
 		
 	}
 	/**
@@ -33,11 +33,13 @@ public class JdbcDemo {
 		ps2.setInt(2, phoneNumber);
 		ps2.executeUpdate();
 	}
-	public static  void selectUser() throws SQLException{
-		Statement st=con.createStatement();
-		ResultSet res= st.executeQuery("select * from contacts where phone_no=9886");
-		while(res.next()){
-			System.out.println(res.getString(4));
-		}	
+	public void checkUser(String user_name) throws Exception {
+		PreparedStatement ps = con.prepareStatement("select * from user_details where user_name=?;");
+		ps.setString(1,user_name );
+		ResultSet res= ps.executeQuery();
+		res.next();
+		pass=res.getString(3);
+		System.out.println(pass);
+		
 	}
 }

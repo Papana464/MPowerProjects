@@ -9,10 +9,16 @@
 	<servlet-name>govardhan</servlet-name>
 	<servlet-class>com.Servlets.servlet.LoginServlet</servlet-class> 
   </servlet>
-  
+   <servlet> 
+	<servlet-name>gova</servlet-name>
+	<servlet-class>com.Servlets.servlet.UserDataServlet</servlet-class> 
+  </servlet>
   <servlet-mapping>
 	<servlet-name>govardhan</servlet-name>
 	<url-pattern>/login.xyz</url-pattern>  
   </servlet-mapping>
-  
+    <servlet-mapping>
+	<servlet-name>gova</servlet-name>
+	<url-pattern>/userData.xyz</url-pattern>  
+  </servlet-mapping>
 </web-app>

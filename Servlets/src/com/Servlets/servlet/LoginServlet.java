@@ -1,35 +1,42 @@
 package com.Servlets.servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import javax.servlet.GenericServlet;
+
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 
-public class LoginServlet extends GenericServlet {
+@SuppressWarnings("serial")
+public class LoginServlet extends HttpServlet {
 	
 	
 	public void init(ServletConfig config) {
-		System.out.println("Hello this is from init method.");
+		System.out.println("Hello this is from init method in login servlet.");
 		
 	}
 	@Override
-	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException{
-		// TODO Auto-generated method stub
+	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
+		
 		String userName = req.getParameter("userName");
 		String password = req.getParameter("password");
-		System.out.println("Hello this is from service method.  "+ userName + password);
 		JdbcDemo obj=new JdbcDemo();
 		try {
-			obj.updateUser("xyz1234",99667792);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+			if(password.equals(obj.checkUser(userName))) {
+				System.out.println("password verified!!");
+				RequestDispatcher rd= req.getRequestDispatcher("/userData.html");
+				rd.forward(req, res);
+			}else {
+				RequestDispatcher rd= req.getRequestDispatcher("/index.html");
+				rd.forward(req, res);
+			}
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}	
 	}
 	
 	

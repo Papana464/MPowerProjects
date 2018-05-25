@@ -4,40 +4,26 @@ import java.sql.*;
 public class JdbcDemo {
 	
 	static Connection con = DBConnection.getDBConnection();
+	public String checkUser(String user_name) throws Exception {
+		PreparedStatement ps = con.prepareStatement("select * from user_details where user_name=?;");
+		ps.setString(1, user_name);
+		ResultSet res= ps.executeQuery();
+		res.next();
+		String pass=res.getString(3);
+		return pass;
+	}
 	
-//	public static void main(String[] args) throws Exception {
-//		JdbcDemo obj = new JdbcDemo();
-//		obj.addUser("govardhan", 9886, "Hyd");
-//		obj.updateUser("buddy",99667792);
-//		selectUser();
-//		
-//	}
-	/**
-	 * This method will add user into contacts table
-	 * @param name
-	 * @param phoneNumber
-	 * @param place
-	 * @throws SQLException
-	 */
-	public  void addUser(String name, Integer phoneNumber, String place) throws SQLException{
+	public  void insertUser( String user_name, String password, String confirm_password,String phone_no,String emergency_contact,String joining_date,String email) throws SQLException{
 		
-		PreparedStatement ps1 =con.prepareStatement("insert into contacts (name,phone_no,place)values(?,?,?)");
-		ps1.setString(1, name);
-		ps1.setInt(2, phoneNumber);
-		ps1.setString(3,place);
+		PreparedStatement ps1 =con.prepareStatement("insert into user_details (user_name,password,confirm_password,phone_no,emergency_contact,joining_date,email)values(?,?,?,?,?,?,?)");
+		ps1.setString(1, user_name);
+		ps1.setString(2,password);
+		ps1.setString(3,confirm_password );
+		ps1.setString(4,phone_no );
+		ps1.setString(5,emergency_contact );
+		ps1.setString(6,joining_date );
+		ps1.setString(7, email);
 		ps1.executeUpdate();
 	}
-	public void updateUser(String name,Integer phoneNumber) throws SQLException{
-		PreparedStatement ps2 = con.prepareStatement("update contacts set name = ? where phone_no = ?");
-		ps2.setString(1, name);
-		ps2.setInt(2, phoneNumber);
-		ps2.executeUpdate();
-	}
-	public static  void selectUser() throws SQLException{
-		Statement st=con.createStatement();
-		ResultSet res= st.executeQuery("select * from contacts where phone_no=9886");
-		while(res.next()){
-			System.out.println(res.getString(4));
-		}	
-	}
+	
 }

@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>My_Server</title>
-</head>
-<body>
-	<h1>hello this is index file</h1>
-	<form action="login.xyz">
-		UserName:<input type="text" name="userName"/><br/>
-		Password:<input type="password" name="password"/><br/>
-		<input type="submit" name="submit"/>
-	</form>
-</body>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>My_Server</title>
+		<link rel="stylesheet" href="main.css">
+	</head>
+	<body>
+		<script src="script.js"></script>
+		<div class="login-page">
+		    <div class="form">
+			    <form class="login-form" action="login.xyz" method="post">
+			      <input type="text" placeholder="userName" name="userName"/>
+			      <input type="password" placeholder="password" name="password"/>
+			      <button>login</button>
+			      <p class="message">Not registered? <a href="userDetails.html">Create an account</a></p>
+			    </form>
+		  	</div>
+		</div>
+	</body>
 </html>
