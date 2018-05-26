@@ -28,10 +28,10 @@ public class LoginServlet extends HttpServlet {
 		try {
 			if(password.equals(obj.checkUser(userName))) {
 				System.out.println("password verified!!");
-				RequestDispatcher rd= req.getRequestDispatcher("/userData.html");
+				RequestDispatcher rd= req.getRequestDispatcher("/userData.jsp");
 				rd.forward(req, res);
 			}else {
-				RequestDispatcher rd= req.getRequestDispatcher("/index.html");
+				RequestDispatcher rd= req.getRequestDispatcher("/index.jsp");
 				rd.forward(req, res);
 			}
 		} catch (Exception e1) {

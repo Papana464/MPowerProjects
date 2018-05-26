@@ -41,7 +41,7 @@ public class UserDataServlet extends HttpServlet {
 
 			e.printStackTrace();
 		}
-		RequestDispatcher rd= req.getRequestDispatcher("/userData.html");
+		RequestDispatcher rd= req.getRequestDispatcher("/userData.jsp");
 		rd.forward(req, res);
 	}
 
