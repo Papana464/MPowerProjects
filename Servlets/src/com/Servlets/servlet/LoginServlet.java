@@ -13,32 +13,39 @@ import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("serial")
 public class LoginServlet extends HttpServlet {
-	
-	
+
+
 	public void init(ServletConfig config) {
 		System.out.println("Hello this is from init method in login servlet.");
-		
+
 	}
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
-		
+
 		String userName = req.getParameter("userName");
 		String password = req.getParameter("password");
-		JdbcDemo obj=new JdbcDemo();
-		try {
-			if(password.equals(obj.checkUser(userName))) {
-				System.out.println("password verified!!");
-				RequestDispatcher rd= req.getRequestDispatcher("/userData.jsp");
-				rd.forward(req, res);
-			}else {
-				RequestDispatcher rd= req.getRequestDispatcher("/index.jsp");
-				rd.forward(req, res);
+		if(userName==""||password==""){
+			RequestDispatcher rd= req.getRequestDispatcher("/login.jsp");
+			rd.forward(req, res);
 			}
-		} catch (Exception e1) {
-			e1.printStackTrace();
-		}	
+		else {
+				JdbcDemo obj=new JdbcDemo();
+				try {
+					if(password.equals(obj.checkUser(userName))) {
+						System.out.println("password verified!!");
+						RequestDispatcher rd= req.getRequestDispatcher("/userData.jsp");
+						rd.forward(req, res);
+					}else {
+						req.setAttribute("msg", "username or password is incorrect");
+						RequestDispatcher rd= req.getRequestDispatcher("/login.jsp");
+						rd.forward(req, res);
+					}
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
 	}
-	
-	
+
+
 }
 

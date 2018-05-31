@@ -34,15 +34,21 @@ public class UserDataServlet extends HttpServlet {
 		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		Date date1 = new Date();
 		String date = dateFormat.format(date1);
-		String email = req.getParameter("email");		
+		String email = req.getParameter("email");
+		if(userName==""||password==""||confirmPassword==""||phoneNumber==""||emergencyContact==""||email=="") {
+			RequestDispatcher rd= req.getRequestDispatcher("/registration.jsp");
+			rd.forward(req, res);
+		}else {
 		try {
 			obj.insertUser(userName, password,confirmPassword, phoneNumber, emergencyContact, date, email);
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		}
-		RequestDispatcher rd= req.getRequestDispatcher("/userData.jsp");
+		RequestDispatcher rd= req.getRequestDispatcher("/login.jsp");
 		rd.forward(req, res);
+		}
+		
 	}
 
 }

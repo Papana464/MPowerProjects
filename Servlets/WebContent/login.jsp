@@ -8,11 +8,15 @@
 	<body>
 		<div class="login-page">
 		    <div class="form">
-			    <form class="login-form" action="login.xyz" method="post">
+			    <form class="login-form" action="login.abc" method="post">
 			      <input type="text" placeholder="userName" name="userName"/>
 			      <input type="password" placeholder="password" name="password"/>
 			      <button>login</button>
-			      <p class="message">Not registered? <a href="userDetails.jsp">Create an account</a></p>
+			      <%if(request.getAttribute("msg1")!=null){ %>
+			   <span style="color:red"><%=request.getAttribute("msg1") %></span> <%} %>
+			      <%if(request.getAttribute("msg")!=null){ %>
+			   <span style="color:red"><%=request.getAttribute("msg") %></span> <%} %>
+			      <p class="message">Not registered? <a href="registration.jsp">Create an account</a></p>
 			    </form>
 		  	</div>
 		</div>
