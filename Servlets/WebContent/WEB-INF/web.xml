@@ -4,18 +4,6 @@
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-  	<servlet-name>action</servlet-name>
-  	<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
-  	<init-param>
-  		<param-name>config</param-name>
-  		<param-value>/WEB-INF/struts_config.xml</param-value>
-  	</init-param>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>action</servlet-name>
-  	<url-pattern>*.abc</url-pattern>
-  </servlet-mapping>
   <servlet> 
 	<servlet-name>govardhan</servlet-name>
 	<servlet-class>com.Servlets.servlet.LoginServlet</servlet-class> 
