@@ -9,8 +9,9 @@ public class JdbcDemo {
 		JdbcDemo obj = new JdbcDemo();
 //		obj.addUser("govardhan", 9886, "Hyd");
 //		obj.updateUser("buddy",99667792);
-		obj.checkUser("nani");
-		
+	//	obj.checkUser("vishnu");
+		obj.retrivePassword("govardhan","papan.464@gmail.com" );
+		System.out.println(obj.retrivePassword("govardhan","papan.464@gmail.com" ));
 	}
 	/**
 	 * This method will add user into contacts table
@@ -38,8 +39,21 @@ public class JdbcDemo {
 		ps.setString(1,user_name );
 		ResultSet res= ps.executeQuery();
 		res.next();
-		pass=res.getString(3);
-		System.out.println(pass);
+		boolean b=res.first();
+		System.out.println(b);
 		
+	}
+	public String retrivePassword(String user_name,String email) throws Exception {
+		PreparedStatement ps3= con.prepareStatement("select * from user_details where (user_name,email) =(?,?)");
+		ps3.setString(1,user_name);
+		ps3.setString(2, email);
+		ResultSet res = ps3.executeQuery();
+		res.next();
+		if (res.first()==true) {
+			pass=res.getString(3);
+			System.out.println(pass);
+			
+		}
+		return pass;
 	}
 }

@@ -9,8 +9,8 @@
 	<div class="login-page">
 		   <div class="form">
 			   <form class="register-form" method="post">
-			     <h1>Successfully logged in</h1>
-			     <p class="message"> <a href="login.jsp">Home</a></p>
+			      <button>Users List</button>
+			     <p class="message"> <a href="login.jsp">LogOut</a></p>
 			   </form>
 		  </div>
 	</div>

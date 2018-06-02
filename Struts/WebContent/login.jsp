@@ -17,7 +17,7 @@
 			   <span style="color:red"><%=request.getAttribute("msg1") %></span> <%} %>
 			      <%if(request.getAttribute("msg")!=null){ %>
 			   <span style="color:red"><%=request.getAttribute("msg") %></span> <%} %>
-			      <p class="message">Not registered? <a href="registration.jsp">Create an account</a></p>
+			      <p class="message">Not registered? <a href="home.abc">Create an account</a><br><a href="retrivePwd.abc">Forgot password</a></p>
 			    </form>
 		  	</div>
 		</div>

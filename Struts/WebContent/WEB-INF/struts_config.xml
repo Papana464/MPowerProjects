@@ -4,17 +4,31 @@
           "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
 <struts-config>
 	<form-beans>
-		<form-bean name="govardhan" type="com.Struts.formbean.LoginForm"></form-bean>
+		<form-bean name="xyz1" type="com.Struts.formbean.LoginForm"></form-bean>
+		<form-bean name="xyz3" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="userName" type="java.lang.String"></form-property>
+			<form-property name="password" type="java.lang.String"></form-property>
+			<form-property name="email" type="java.lang.String"></form-property>
+		</form-bean>
 	</form-beans>
 	<action-mappings>
-		<action path="/login" type="com.Struts.action.LoginAction" name="govardhan">
+		<action path="/login" type="com.Struts.action.LoginAction" name="xyz3" parameter="login">
+			<forward name="username_failure" path="/login.jsp"></forward>
 			<forward name="failure" path="/login.jsp"></forward>
 			<forward name="success" path="/userData.jsp"></forward>
 			<forward name="badCredential" path="/login.jsp"></forward>
 		</action>
-		<action path="/userData" type="com.Struts.action.RegistrationAction" name="govardhan">
+		<action path="/retrive" type="com.Struts.action.LoginAction" name="xyz3" parameter="retrivePasswordMethod">
+			<forward name="incorrect_data" path="/retrive_password.jsp"></forward>
+			<forward name="congratulation" path="/retrive_password.jsp"></forward>
+		</action>
+		<action path="/userData" type="com.Struts.action.LoginAction" name="xyz1" parameter="registrationMethod">
 			<forward name="missingData" path="/registration.jsp"></forward>
 			<forward name="SuccessfullyCreated" path="/userData.jsp"></forward>
 		</action>
+		<action path="/home" type="org.apache.struts.actions.ForwardAction" parameter="/registration.jsp"></action>
+		<action path="/retrivePwd" type="org.apache.struts.actions.ForwardAction" parameter="/retrive_password.jsp"></action>
+		<action path="/registration" type="org.apache.struts.actions.ForwardAction" parameter="/login.jsp"></action>
+		<action path="/xyz" type="org.apache.struts.actions.ForwardAction" parameter="/login.jsp"></action>
 	</action-mappings>
 </struts-config>          
