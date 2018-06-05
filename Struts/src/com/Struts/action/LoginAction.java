@@ -1,5 +1,6 @@
 package com.Struts.action;
 
+import java.util.List;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -12,7 +13,8 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.DynaActionForm;
 import org.apache.struts.actions.MappingDispatchAction;
 import com.Struts.formbean.LoginForm;
-import com.Struts.database.JdbcDemo;
+import com.Struts.database.StrutsDAO;
+import com.Struts.database.User;
 
 public class LoginAction extends MappingDispatchAction{
 	public ActionForward login(ActionMapping mappings,ActionForm form,HttpServletRequest request,HttpServletResponse response) throws Exception {
@@ -20,7 +22,7 @@ public class LoginAction extends MappingDispatchAction{
 		String name = dynaForm.getString("userName").toString();	
 		String password = dynaForm.getString("password").toString();
 		
-		JdbcDemo obj = new JdbcDemo();
+		StrutsDAO obj = new StrutsDAO();
 		boolean userCheck = false ;
 		if(name==""||password=="") {
 			request.setAttribute("msg1", "username or password is blank");
@@ -48,7 +50,7 @@ public class LoginAction extends MappingDispatchAction{
 		String name = dynaForm.getString("userName").toString();	
 		String email1 = dynaForm.getString("email").toString();
 		
-		JdbcDemo obj = new JdbcDemo();
+		StrutsDAO obj = new StrutsDAO();
 		String retrive_password=obj.retrivePassword(name,email1 );
 		
 		if (retrive_password==null) {
@@ -64,7 +66,7 @@ public class LoginAction extends MappingDispatchAction{
 		LoginForm bean= (LoginForm)form;
 		String name= bean.getUserName();
 		String password =bean.getPassword();
-		JdbcDemo obj = new JdbcDemo();
+		StrutsDAO obj = new StrutsDAO();
 		String confirmPassword = bean.getConfirmPassword();
 		String phoneNumber = bean.getPhoneNumber();
 		String emergencyContact = bean.getEmergencyContact();
@@ -84,5 +86,10 @@ public class LoginAction extends MappingDispatchAction{
 		}
 		
 		
+	}
+	public ActionForward getUserList(ActionMapping mappings,ActionForm form,HttpServletRequest request,HttpServletResponse response) throws Exception {
+		StrutsDAO obj =new StrutsDAO();
+		request.setAttribute("user_list", obj.getUserList());
+		return mappings.findForward("userList");
 	}
 }

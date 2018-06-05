@@ -1,10 +1,13 @@
 package com.Struts.database;
+import java.util.List;
 import java.sql.*;
+import java.util.ArrayList;
 
-public class JdbcDemo {
+public class StrutsDAO {
 	String userCheck;
 	String pass;
 	static Connection con = DBConnection.getDBConnection();
+	
 	public Boolean checkUser(String user_name) throws Exception {
 		PreparedStatement ps = con.prepareStatement("select * from user_details where user_name=?;");
 		ps.setString(1, user_name);
@@ -45,4 +48,26 @@ public class JdbcDemo {
 		ps1.executeUpdate();
 	}
 	
+	public List<User> getUserList() throws SQLException{
+		PreparedStatement ps4 =con.prepareStatement("select * from user_details");
+		ResultSet rs1 = ps4.executeQuery();
+		List<User> userList = new ArrayList<>();
+		while(rs1.next()) {
+			User us = new User();
+			
+			int id = rs1.getInt("user_id");
+			us.setUser_id(String.valueOf(id));
+			String name = rs1.getString("user_name");
+			us.setUser_name(name);
+			String phnNo = rs1.getString("phone_no");
+			us.setPhone_no(phnNo);
+			String emailId = rs1.getString("email");
+			us.setEmail(emailId);
+			String date = rs1.getString("joining_date");
+			us.setJoining_date(date);
+			userList.add(us);
+		}
+		
+		return userList;
+	}	
 }

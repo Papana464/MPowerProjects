@@ -30,5 +30,8 @@
 		<action path="/retrivePwd" type="org.apache.struts.actions.ForwardAction" parameter="/retrive_password.jsp"></action>
 		<action path="/registration" type="org.apache.struts.actions.ForwardAction" parameter="/login.jsp"></action>
 		<action path="/xyz" type="org.apache.struts.actions.ForwardAction" parameter="/login.jsp"></action>
+		<action path="/userList" type="com.Struts.action.LoginAction" parameter="getUserList">
+			<forward name="userList" path="/userData.jsp"></forward>
+		</action>
 	</action-mappings>
 </struts-config>          
