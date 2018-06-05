@@ -1,6 +1,5 @@
 package com.Struts.action;
 
-import java.util.List;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -14,7 +13,6 @@ import org.apache.struts.action.DynaActionForm;
 import org.apache.struts.actions.MappingDispatchAction;
 import com.Struts.formbean.LoginForm;
 import com.Struts.database.StrutsDAO;
-import com.Struts.database.User;
 
 public class LoginAction extends MappingDispatchAction{
 	public ActionForward login(ActionMapping mappings,ActionForm form,HttpServletRequest request,HttpServletResponse response) throws Exception {

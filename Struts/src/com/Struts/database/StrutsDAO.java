@@ -48,24 +48,22 @@ public class StrutsDAO {
 		ps1.executeUpdate();
 	}
 	
-	public List<User> getUserList() throws SQLException{
+	public List<Object> getUserList() throws SQLException{
 		PreparedStatement ps4 =con.prepareStatement("select * from user_details");
 		ResultSet rs1 = ps4.executeQuery();
-		List<User> userList = new ArrayList<>();
+		List<Object> userList = new ArrayList<>();
 		while(rs1.next()) {
-			User us = new User();
-			
 			int id = rs1.getInt("user_id");
-			us.setUser_id(String.valueOf(id));
 			String name = rs1.getString("user_name");
-			us.setUser_name(name);
 			String phnNo = rs1.getString("phone_no");
-			us.setPhone_no(phnNo);
 			String emailId = rs1.getString("email");
-			us.setEmail(emailId);
 			String date = rs1.getString("joining_date");
-			us.setJoining_date(date);
-			userList.add(us);
+			userList.add(id);
+			userList.add(name);
+			userList.add(phnNo);
+			userList.add(emailId);
+			userList.add(date);
+
 		}
 		
 		return userList;

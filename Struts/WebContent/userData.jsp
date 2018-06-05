@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <%@page import="java.util.List"%>
-<%@page import="com.Struts.database.User"%>
+
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <link rel="stylesheet" href="main.css">
+
 </head>
 <body>
-	<div class="login-page" style="width: 100%">
-		<div class="form" style="width: 100%">
-			<form class="register-form" style="width: 100%" action="userList.abc" method="post">
-				<button>Users List</button>
-				<p class="message" >
-					<a  href="login.jsp">LogOut</a>
+	<div class="login-page" >
+		<div class="form" >
+			<form class="register-form"  action="userList.abc" method="post">
+				<button >Users List</button>
+				<p>
+					<button ><a  href="login.jsp">LogOut</a></button>
 				</p><br/>
 				<% if(request.getAttribute("user_list")!=null) {%>
+				<style>
+					.form button{
+					width:50%;
+					}
+					.login-page{
+						width:600px;
+					}
+					.form{
+						max-width: 600px;
+					  margin: 0 auto 600px;
+					}
+				</style>
 				<table style="width:100%">
-				<caption>Users List From DataBase</caption>
+				<caption ><b>Users List From DataBase</b></caption>
 					<tr>
-					<th>User ID</th>
-					<th>User Name</th>
-					<th>Phone No.</th>
-					<th>Email</th>
-					<th>Joining Date</th>
+						<th>User ID</th>
+						<th>User Name</th>
+						<th>Phone No.</th>
+						<th>Email</th>
+						<th>Joining Date</th>
 					</tr>
-					<% for(User us: (List<User>)request.getAttribute("user_list")) {%>
-
+					<% List<Object> user = (List<Object>)request.getAttribute("user_list");  %>
+					<% for(int i=0;i<user.size();i+=5){%>
 					<tr>
-						<td><%= us.getUser_id() %></td>
-						<td><%= us.getUser_name() %></td>
-						<td><%= us.getPhone_no() %></td>
-						<td><%= us.getEmail() %></td>
-						<td><%= us.getJoining_date() %></td>
-					
+						<td><%= user.get(i) %></td>
+						<td><%= user.get(i+1) %></td>
+						<td><%= user.get(i+2) %></td>
+						<td><%= user.get(i+3) %></td>
+						<td><%= user.get(i+4) %></td>
 					</tr>
 					
 					<%} %>
