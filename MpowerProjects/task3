@@ -15,7 +15,7 @@ What is a table scan?
 it scans complete table in a databse for the given query and retrive the data if query is true.
 
 How do you find the largest value in a column?
-if it int we can use MAX, if it string we can use length.
+if it is int we can use MAX, if it is string we can use length.
 
 Compare and contrast inner join and outer join.
 You use INNER JOIN to return all rows from both tables where there is a match. ie. in the resulting table all the rows and columns will have values.
