@@ -1,0 +1,22 @@
+1. b
+2. b
+3. d
+4. 
+5. d
+6. e
+7. i
+what is database view?
+a view is used to combine data from two or more tables, it wont store the data.
+
+What is the purpose of a foreign key?
+A foreign key is the field that points to the primary key of another table. The purpose of the foreign key is to ensure referential integrity of the data. 
+
+What is a table scan?
+it scans complete table in a databse for the given query and retrive the data if query is true.
+
+How do you find the largest value in a column?
+if it int we can use MAX, if it string we can use length.
+
+Compare and contrast inner join and outer join.
+You use INNER JOIN to return all rows from both tables where there is a match. ie. in the resulting table all the rows and columns will have values.
+In OUTER JOIN the resulting table may have empty columns. Outer join may be either LEFT or RIGHT
