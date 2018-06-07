@@ -17,6 +17,9 @@ public class LastItemIterator {
 		res.add(25);
 		res.add(71);
 		res.add(69);
+		//not calling all the values
+		System.out.println(res.get(res.size()-1));
+		//by calling all the values
 		Iterator<Integer> itr = res.iterator();
 		while(itr.hasNext()) {
 			res2 = itr.next();
