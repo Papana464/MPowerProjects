@@ -7,9 +7,9 @@ import java.time.format.DateTimeFormatter;
 public class UnixTimeStampConverter {
 
 	public static void main(String[] args) {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("eeee,d MMM yyyy H:mm:ss zzzz");
-		long unixTime = 1528373083;
-		String formattedDtm = Instant.ofEpochSecond(unixTime).atZone(ZoneId.of("GMT+5")).format(formatter);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("eeee,d MMM yyyy h:mm:ss a zzzz");
+		long unixTime = System.currentTimeMillis()/1000;
+		String formattedDtm = Instant.ofEpochSecond(unixTime).atZone(ZoneId.of("GMT-4")).format(formatter);
 		System.out.println(formattedDtm);
 	}
 }
