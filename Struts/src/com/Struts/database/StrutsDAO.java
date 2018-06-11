@@ -1,8 +1,6 @@
 package com.Struts.database;
 import java.util.List;
 
-import jdk.nashorn.internal.runtime.linker.JavaAdapterFactory;
-
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
