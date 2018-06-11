@@ -1,8 +1,6 @@
 package com.Struts.action;
 
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -68,22 +66,21 @@ public class LoginAction extends MappingDispatchAction{
 		String confirmPassword = bean.getConfirmPassword();
 		String phoneNumber = bean.getPhoneNumber();
 		String emergencyContact = bean.getEmergencyContact();
-		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		Date date1 = new Date();
-		String date = dateFormat.format(date1);
+		java.sql.Date date2 = new java.sql.Date(date1.getTime());
 		String email = bean.getEmail();
 		if(name==""||password==""||confirmPassword==""||phoneNumber==""||emergencyContact==""||email=="") {
+			request.setAttribute("missing", "Oops Empty Field");
 			return mappings.findForward("missingData");
 		}else {
 		try {
-			obj.insertUser(name, password,confirmPassword, phoneNumber, emergencyContact, date, email);
+			obj.insertUser(name, password,confirmPassword, phoneNumber, emergencyContact, date2, email);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		request.setAttribute("created", "Succesfully created");
 		return mappings.findForward("SuccessfullyCreated") ;
 		}
-		
-		
 	}
 	public ActionForward getUserList(ActionMapping mappings,ActionForm form,HttpServletRequest request,HttpServletResponse response) throws Exception {
 		StrutsDAO obj =new StrutsDAO();

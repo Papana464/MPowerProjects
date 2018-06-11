@@ -17,6 +17,10 @@
 			      <input type="email" placeholder="email" name="email"/>
 			      <button>create</button>
 			      <p class="message">Already registered? <a href="registration.abc">Sign In</a></p>
+			      <%if(request.getAttribute("missing")!=null){ %>
+			   <span style="color:red"><%=request.getAttribute("missing") %></span> <%} %>
+			   <%if(request.getAttribute("created")!=null){ %>
+			   <span style="color:green"><%=request.getAttribute("created") %></span> <%} %>
 			    </form>
 		  	</div>
 		</div>

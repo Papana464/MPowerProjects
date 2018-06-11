@@ -1,6 +1,11 @@
 package com.Struts.database;
 import java.util.List;
+
+import jdk.nashorn.internal.runtime.linker.JavaAdapterFactory;
+
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class StrutsDAO {
@@ -35,7 +40,7 @@ public class StrutsDAO {
 		return pass;
 	}
 	
-	public  void insertUser( String user_name, String password, String confirm_password,String phone_no,String emergency_contact,String joining_date,String email) throws SQLException{
+	public  void insertUser( String user_name, String password, String confirm_password,String phone_no,String emergency_contact,Date date1,String email) throws SQLException{
 		
 		PreparedStatement ps1 =con.prepareStatement("insert into user_details (user_name,password,confirm_password,phone_no,emergency_contact,joining_date,email)values(?,?,?,?,?,?,?)");
 		ps1.setString(1, user_name);
@@ -43,12 +48,12 @@ public class StrutsDAO {
 		ps1.setString(3,confirm_password );
 		ps1.setString(4,phone_no );
 		ps1.setString(5,emergency_contact );
-		ps1.setString(6,joining_date );
+		ps1.setDate(6,date1 );
 		ps1.setString(7, email);
 		ps1.executeUpdate();
 	}
 	
-	public List<Object> getUserList() throws SQLException{
+	public List<Object> getUserList() throws SQLException, ParseException{
 		PreparedStatement ps4 =con.prepareStatement("select * from user_details");
 		ResultSet rs1 = ps4.executeQuery();
 		List<Object> userList = new ArrayList<>();
@@ -57,13 +62,28 @@ public class StrutsDAO {
 			String name = rs1.getString("user_name");
 			String phnNo = rs1.getString("phone_no");
 			String emailId = rs1.getString("email");
-			String date = rs1.getString("joining_date");
+			Date date = rs1.getDate("joining_date");
+			SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+			java.util.Date date1 = new java.util.Date(date.getTime());
+			String dateSt = format.format(date1.getTime());
+			
+			java.util.Date date2 =new java.util.Date(date.getTime());
+			java.util.Date date3 = new java.util.Date();
+			long diff=(date3.getTime()-date2.getTime())/(24*60*60*1000);
 			userList.add(id);
 			userList.add(name);
 			userList.add(phnNo);
 			userList.add(emailId);
-			userList.add(date);
-
+			userList.add(dateSt);
+			if(diff==0){
+				userList.add("Today");			
+						}
+			else if(diff==1) {
+				userList.add("Yesterday");
+			}
+			else if(diff>1) {
+				userList.add(diff+" days ago");
+			}
 		}
 		
 		return userList;
