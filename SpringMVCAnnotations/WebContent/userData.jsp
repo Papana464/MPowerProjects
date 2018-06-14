@@ -64,7 +64,7 @@
 					<a  href="xyz.abc">LogOut</a>
 					
 				</p>
-			
+			</form>
 		</div>
 	</div>
 </body>
