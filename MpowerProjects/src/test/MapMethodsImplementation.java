@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 public class MapMethodsImplementation {
 
@@ -14,7 +15,7 @@ public class MapMethodsImplementation {
 
 	}
 	public void methods() {
-		Map<Integer,String > users = new HashMap<>();
+		Map<Integer,String > users = new TreeMap<>();
 		// put() method
 		users.put(1, "Govardhan");
 		users.put(2, "reddy");

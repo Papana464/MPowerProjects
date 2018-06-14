@@ -1,0 +1,29 @@
+
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>User Details</title>
+<link rel="stylesheet" href="main.css">
+</head>
+<body>
+		<div class="login-page">
+		    <div class="form">
+			    <form:form  class="register-form" modelAttribute="loginForm" action="userData.abc" method="post">
+			      <input type="text" placeholder="name" name="userName"/>
+			      <input type="password" placeholder="password" name="password"/>
+			      <input type="password" placeholder="confirm password" name="confirmPassword"/>
+			      <input type="tel" placeholder="phoneNumber" name="phoneNumber"/>	
+			      <input type="tel" placeholder="emergencyContact" name="emergencyContact"/>
+			      <input type="email" placeholder="email" name="email"/>
+			      <button>create</button>
+			      <p class="message">Already registered? <a href="xyz.abc">Sign In</a></p>
+			      <%if(request.getAttribute("missing")!=null){ %>
+			   <span style="color:red"><%=request.getAttribute("missing") %></span> <%} %>
+			   <%if(request.getAttribute("created")!=null){ %>
+			   <span style="color:green"><%=request.getAttribute("created") %></span> <%} %>
+			    </form:form>
+		  	</div>
+		</div>
+</body>
+</html>
