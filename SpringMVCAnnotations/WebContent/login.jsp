@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
@@ -13,8 +14,9 @@
 			      <input type="text" placeholder="userName" name="userName"/>
 			      <input type="password" placeholder="password" name="password"/>
 			      <button>login</button>
-			      <%if(request.getAttribute("msg")!=null){ %>
-			   <span style="color:red"><%=request.getAttribute("msg") %></span> <%} %>
+			      <c:if test="${not empty msg}">
+			      <span style="color:red">${msg}</span>
+			      </c:if>
 			      <p class="message">Not registered? <a href="abcd.abc">Create an account</a><br><a href="efg.abc">Forgot password</a></p>
 			    </form>
 		  	</div>

@@ -1,4 +1,5 @@
 <!DOCTYPE html >
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -13,12 +14,12 @@
 				<input type="text" placeholder="email" name="email">
 				<button>Submit</button>
 				<a href="xyz.abc">Home</a>
-				<%if(request.getAttribute("msg2")!=null){ %>
-				<span style="color: red"><%=request.getAttribute("msg2") %></span>
-				<%} %>
-				<%if(request.getAttribute("msg3")!=null){ %>
-				<span style="color: orange"><%=request.getAttribute("msg3") %></span>
-				<%} %>
+				<c:if test="${not empty msg2}">
+			      <span style="color:red">${msg2}</span>
+			      </c:if>
+				<c:if test="${not empty msg3}">
+			      <span style="color:red">${msg3}</span>
+			      </c:if>
 			</form>
 		</div>
 	</div>

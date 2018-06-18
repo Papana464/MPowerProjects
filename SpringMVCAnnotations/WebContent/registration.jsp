@@ -1,5 +1,6 @@
 
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -18,10 +19,12 @@
 			      <input type="email" placeholder="email" name="email"/>
 			      <button>create</button>
 			      <p class="message">Already registered? <a href="xyz.abc">Sign In</a></p>
-			      <%if(request.getAttribute("missing")!=null){ %>
-			   <span style="color:red"><%=request.getAttribute("missing") %></span> <%} %>
-			   <%if(request.getAttribute("created")!=null){ %>
-			   <span style="color:green"><%=request.getAttribute("created") %></span> <%} %>
+			      <c:if test="${not empty missing}">
+			      <span style="color:red">${missing}</span>
+			      </c:if>
+			      <c:if test="${not empty created}">
+			      <span style="color:red">${created}</span>
+			      </c:if>
 			    </form:form>
 		  	</div>
 		</div>

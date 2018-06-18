@@ -125,7 +125,11 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView("userData");
 		mv.addObject("user_list", obj.getUserList());
 		return mv;
-	}	
+	}
+	@RequestMapping("/edit.abc")
+	public ModelAndView edit() throws Exception {
+		return new ModelAndView("edit");
+	}
 	
 
 }

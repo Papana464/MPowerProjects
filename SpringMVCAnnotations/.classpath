@@ -79,5 +79,6 @@
 	<classpathentry kind="lib" path="C:/Program Files/Jar/spring-framework-4.0.4.RELEASE/libs/spring-websocket-4.0.4.RELEASE.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Jar/spring-framework-4.0.4.RELEASE/libs/spring-websocket-4.0.4.RELEASE-javadoc.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Jar/spring-framework-4.0.4.RELEASE/libs/spring-websocket-4.0.4.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Jar/jstl-1.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

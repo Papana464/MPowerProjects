@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<%@page import="com.SpringMVCAnnotations.controllerForm.LoginForm"%>
-<%@page import="java.util.List"%>
 
+<%@page import="java.util.List"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <html>
 <head>
@@ -19,10 +19,11 @@
 	<div class="login-page" >
 		<div class="form" >
 			<form class="register-form"  action="userList.abc" method="post">
-			<% if(request.getAttribute("user_list")==null) {%>
+			<c:if test="${empty user_list}">
 				<button >Users List</button>
-				<%} %>
-				<% if(request.getAttribute("user_list")!=null) {%>
+				</c:if>
+				<c:if test="${not empty user_list}">
+				
 				<style>
 				.form button{
 					width:50%;
@@ -46,25 +47,26 @@
 						<th>Joining Date</th>
 						<th>Joined</th>
 					</tr>
-					
-					<% for(LoginForm user: (List<LoginForm>)request.getAttribute("user_list")){%>
+					<c:forEach var="listValue" items="${user_list}">
 					<tr>
-						<td><%= user.getId() %></td>
-						<td><%= user.getUserName() %></td>
-						<td><%= user.getPhoneNumber() %></td>
-						<td><%= user.getEmail() %></td>
-						<td><%= user.getDate() %></td>
-						<td><%= user.getDiffDate() %></td>
+						<td>${listValue.getId()}</td>
+						<td>${listValue.getUserName()}</td>
+						<td>${listValue.getPhoneNumber()}</td>
+						<td>${listValue.getEmail()}</td>
+						<td>${listValue.getDate()}</td>
+						<td>${listValue.getDiffDate()}</td>
 					</tr>
+					</c:forEach>
 					
-					<%} %>
 				</table>
-				<%} %>
+				
+				</c:if>
 				<p>
 					<a  href="xyz.abc">LogOut</a>
 					
 				</p>
 			</form>
+			
 		</div>
 	</div>
 </body>
